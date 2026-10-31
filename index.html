@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Пивоварня Хартия, Тюмень: свежее нефильтрованное пиво</title>
+<meta name="description" content="Частная пивоварня «Хартия» в Тюмени, с 2015 года. Четыре сорта нефильтрованного пива из воды, солода, хмеля и дрожжей. Где найти свежее пиво.">
+<!-- ВАЖНО: пока сайт демо, он закрыт от поисковиков. При запуске заменить noindex,nofollow на index,follow (и в robots.txt убрать Disallow). -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F2F0EA">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="256x256">
+<!-- При запуске добавить адрес сайта: <link rel="canonical" href="https://АДРЕС/"> и og:url, og:image (полный адрес картинки). -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Хартия">
+<meta property="og:title" content="Пивоварня Хартия, Тюмень: свежее нефильтрованное пиво">
+<meta property="og:description" content="Частная пивоварня в Тюмени. Вода, солод, хмель и дрожжи. Больше ничего.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Brewery",
+  "name": "Хартия",
+  "legalName": "ООО «Хартия»",
+  "description": "Частная пивоварня в Тюмени. Нефильтрованное пиво из воды, солода, хмеля и дрожжей.",
+  "foundingDate": "2015",
+  "taxID": "7224068390",
+  "address": { "@type": "PostalAddress", "addressLocality": "Тюмень", "addressCountry": "RU" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/*
+  Идея: «Хартия» значит «устав». Страница читается как устав пивоварни, а полосы
+  меняют цвет целиком, как разделы документа: бумага, красный знака, чернила
+  логотипа, тёмно-красный. Красный и тёмно-красный берутся из лопастей мельницы.
+  Цвета только из гайдбука. Линий, градиентов и теней покоя нет: разделы
+  отделяются сменой тона.
+*/
+:root {
+  --paper: #F2F0EA;      /* основной фон из гайдбука */
+  --sheet: #FAF8F3;      /* поля форм, лист */
+  --linen: #E4DFD2;      /* вторая ступень бумаги */
+  --ink: #282826;        /* чёрный логотипа */
+  --ink-soft: #3F3E39;   /* второстепенный текст на бумаге */
+  --red: #B41018;        /* красный лопастей */
+  --oxblood: #690C1B;    /* тёмно-красный */
+  --on-dark: #F2F0EA;    /* текст на цветных полосах */
+  --scrim: rgba(40, 40, 38, 0.78);
+  --font-display: 'Old Standard TT', 'Times New Roman', Georgia, serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+  --gutter: clamp(16px, 3.6vw, 56px);
+  --section: clamp(88px, 12vw, 190px);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.on-dark :focus-visible { outline-color: var(--on-dark); }
+
+.wrap { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter); }
+.field-band { padding-block: var(--section); }
+.on-red { background: var(--red); color: var(--on-dark); }
+.on-ink { background: var(--ink); color: var(--on-dark); }
+.on-oxblood { background: var(--oxblood); color: var(--on-dark); }
+.on-linen { background: var(--linen); }
+
+.h2 { font-size: clamp(2.5rem, 7.2vw, 7rem); line-height: 0.96; letter-spacing: -0.025em; }
+.lede { font-size: clamp(1.1rem, 1.5vw, 1.35rem); line-height: 1.55; max-width: 44ch; }
+
+/* Кнопки: плоские, квадратные */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 0.7rem 1.7rem; border: 0; border-radius: 0;
+  background: var(--ink); color: var(--on-dark);
+  font: 600 1.0625rem/1.2 var(--font-body); text-decoration: none; cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(1px); }
+.btn-red { background: var(--red); }
+.btn-red:hover { background: var(--oxblood); }
+.btn-quiet { background: var(--linen); color: var(--ink); }
+.btn-quiet:hover { background: var(--ink); color: var(--on-dark); }
+.on-dark .btn { background: var(--paper); color: var(--ink); }
+.on-dark .btn:hover { background: var(--ink); color: var(--on-dark); }
+.btn-sm { min-height: 42px; padding: 0.35rem 1.1rem; font-size: 0.95rem; }
+
+/* Пометка демо */
+.demo { background: var(--ink); color: var(--on-dark); font-size: 0.875rem; line-height: 1.4; padding-block: 9px; }
+
+/* Шапка: слово, ссылки, одно действие */
+.top { position: sticky; top: 0; z-index: 20; background: var(--paper); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+.brand img { width: clamp(124px, 13vw, 168px); height: auto; }
+.nav { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 38px); }
+.nav a:not(.btn) { text-decoration: none; font-size: 1rem; padding-block: 8px; text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: text-decoration-color .2s var(--ease); }
+.nav a:not(.btn):hover { text-decoration-color: currentColor; }
+@media (max-width: 720px) { .nav a:not(.btn) { display: none; } }
+
+/* Главный экран */
+.hero { padding-block: clamp(24px, 3.5vw, 56px) clamp(56px, 8vw, 120px); overflow: clip; }
+.hero h1 { font-size: clamp(1.5rem, 7.4vw, 7.6rem); line-height: 0.96; letter-spacing: -0.03em; }
+.hero-row { display: grid; gap: clamp(32px, 5vw, 72px); margin-top: clamp(12px, 1.5vw, 24px); align-items: end; }
+@media (min-width: 900px) { .hero-row { grid-template-columns: 1fr minmax(380px, 0.9fr); } }
+.hero-text { display: grid; gap: 2rem; justify-items: start; padding-bottom: clamp(0px, 2vw, 32px); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-mill { justify-self: end; width: min(100%, 560px); will-change: transform; }
+.hero-mill img { width: 100%; }
+
+/* Хартия: красное поле, четыре статьи */
+.charter { display: grid; gap: clamp(40px, 7vw, 112px); }
+@media (min-width: 960px) { .charter { grid-template-columns: 5fr 6fr; align-items: start; } .charter-head { position: sticky; top: 110px; } }
+.charter-head .lede { margin-top: 1.75rem; }
+.articles { display: grid; gap: clamp(36px, 5vw, 64px); }
+.articles h3 { font-size: clamp(1.9rem, 3.6vw, 3.1rem); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 0.6rem; }
+.articles p { font-size: 1.1875rem; max-width: 40ch; }
+
+/* Картинки: архивные гравюры и снимки, квадратные, с подписью */
+.fig { margin: 0; }
+.fig img { width: 100%; height: 100%; object-fit: cover; }
+.fig figcaption { margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.4; }
+.charter-head .fig { margin-top: clamp(32px, 4vw, 56px); max-width: 520px; }
+.charter-head .fig img { height: auto; }
+.on-dark .fig figcaption { color: var(--on-dark); }
+.partners-grid .fig { margin-top: clamp(32px, 4vw, 56px); max-width: 560px; }
+.partners-grid .fig img { height: auto; }
+.plates { margin-top: clamp(40px, 6vw, 88px); display: grid; gap: 12px; }
+@media (min-width: 900px) { .plates { grid-template-columns: 1fr 1.5fr; } }
+.plates .fig img { aspect-ratio: 4 / 3; }
+.plates .fig-wide img { aspect-ratio: auto; height: 100%; min-height: 240px; }
+@media (max-width: 899px) { .plates .fig-wide img { aspect-ratio: 16 / 9; height: auto; } }
+
+/* Производство */
+.prod-head { display: grid; gap: clamp(28px, 4vw, 56px); }
+@media (min-width: 960px) { .prod-head { grid-template-columns: 6fr 5fr; align-items: end; } }
+.prod-head .prose { display: grid; gap: 1rem; font-size: 1.1875rem; max-width: 50ch; }
+.steps-title { margin-top: clamp(56px, 8vw, 112px); font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.steps { margin-top: 1.5rem; display: grid; gap: 12px; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } .steps li { min-height: 260px; } }
+.steps li { padding: clamp(22px, 2.4vw, 34px); display: grid; gap: 0.7rem; align-content: start; transition: transform .3s var(--ease); }
+.steps li:hover { transform: translateY(-6px); }
+.steps li:nth-child(1) { background: var(--linen); }
+.steps li:nth-child(2) { background: var(--red); color: var(--on-dark); }
+.steps li:nth-child(3) { background: var(--ink); color: var(--on-dark); }
+.steps li:nth-child(4) { background: var(--oxblood); color: var(--on-dark); }
+.steps h3 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1.05; }
+
+/* Сорта: четыре строки, название, описание и цифры */
+.sorts-head { display: grid; gap: 1.5rem; }
+.sorts-head .lede { color: var(--on-dark); }
+.menu { margin-top: clamp(40px, 6vw, 80px); display: grid; gap: clamp(32px, 4vw, 48px); }
+.sort { display: grid; gap: 1.5rem 3rem; padding: clamp(24px, 3.5vw, 48px); background: #34342F; transition: background-color .3s var(--ease), transform .35s var(--ease); }
+.sort:nth-child(odd) { background: #2F2F2C; }
+.sort:hover { background: var(--oxblood); transform: translateX(clamp(4px, 1vw, 16px)); }
+@media (min-width: 1000px) { .sort { grid-template-columns: 5fr 4fr 3fr; align-items: start; } }
+.sort-name { font-size: clamp(2.4rem, 6vw, 5.8rem); line-height: 0.98; letter-spacing: -0.03em; }
+.sort-type { margin-top: 0.9rem; display: inline-block; background: var(--red); color: var(--on-dark); padding: 0.2rem 0.8rem; font-size: 1rem; }
+.sort-desc { font-size: 1.1875rem; max-width: 40ch; }
+.specs { margin: 0; display: grid; gap: 1rem; }
+.specs div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.specs dt { font-size: 1rem; }
+.specs dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 2.4vw, 2.3rem); line-height: 1; white-space: nowrap; }
+.menu-note { margin-top: clamp(32px, 4vw, 56px); max-width: 56ch; font-size: 1.125rem; }
+
+/* Где найти свежее: карта 2ГИС и список точек */
+.where { display: grid; gap: clamp(28px, 5vw, 64px); }
+.where-head .lede { margin-top: 1.5rem; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2; max-width: 28ch; }
+.where-body { --map-h: clamp(420px, 68vh, 640px); display: grid; gap: 12px; }
+@media (min-width: 960px) { .where-body { grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr); align-items: start; } .panel { height: var(--map-h); overflow-y: auto; } }
+.map { height: var(--map-h); background: var(--paper); display: grid; place-items: center; padding: 24px; text-align: center; }
+.map[data-live] { padding: 0; display: block; }
+.panel { background: var(--paper); }
+.shops { display: grid; gap: 8px; padding: 8px; list-style: none; margin: 0; }
+.shops[hidden], .detail[hidden] { display: none; }
+.shop { display: grid; gap: 0.15rem; width: 100%; padding: 16px 18px; border: 0; background: var(--sheet); color: var(--ink); text-align: left; font: inherit; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease); }
+.shop:hover { background: var(--red); color: var(--on-dark); }
+.shop .s-name { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1.1; }
+.detail { padding: clamp(20px, 2.4vw, 32px); display: grid; gap: 0.9rem; align-content: start; }
+.detail .back { justify-self: start; border: 0; background: var(--linen); color: var(--ink); min-height: 40px; padding: 0.4rem 1rem; font: 600 0.95rem/1.2 var(--font-body); cursor: pointer; }
+.detail .back:hover { background: var(--ink); color: var(--on-dark); }
+.detail h3 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); line-height: 1.05; }
+.detail dl { margin: 0; display: grid; gap: 0.9rem; }
+.detail dt { font-weight: 600; }
+.detail dd { margin: 0.1rem 0 0; font-size: 1.1rem; }
+.detail .btn { justify-self: start; }
+.where-note { max-width: 62ch; font-size: 1rem; }
+
+/* Бот */
+.bot-grid { display: grid; gap: clamp(40px, 6vw, 96px); }
+@media (min-width: 960px) { .bot-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; } }
+.bot-copy .prose { margin-top: 1.75rem; display: grid; gap: 1rem; font-size: 1.1875rem; max-width: 46ch; }
+.later { margin-top: 1rem; display: grid; gap: 0.5rem; font-size: 1.1875rem; }
+.later li { padding-left: 1.5rem; position: relative; }
+.later li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.7rem; height: 0.7rem; background: var(--red); }
+.form-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-top: clamp(40px, 5vw, 64px); }
+.phone { width: 100%; max-width: 400px; justify-self: center; background: var(--ink); border-radius: 30px; padding: 10px; transition: transform .4s var(--ease); }
+.phone:hover { transform: rotate(-1deg) translateY(-4px); }
+.phone-inner { background: var(--sheet); border-radius: 22px; overflow: hidden; }
+.phone-head { background: var(--red); color: var(--on-dark); padding: 14px 18px; display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; }
+.phone-head strong { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0.04em; }
+.chat { display: flex; flex-direction: column; gap: 10px; padding: 16px; min-height: 300px; max-height: 360px; overflow-y: auto; }
+.msg { max-width: 88%; padding: 0.6rem 0.9rem; border-radius: 16px; font-size: 0.95rem; line-height: 1.45; overflow-wrap: anywhere; animation: pop .3s var(--ease); }
+.msg-bot { align-self: flex-start; background: var(--linen); border-bottom-left-radius: 4px; }
+.msg-me { align-self: flex-end; background: var(--red); color: var(--on-dark); border-bottom-right-radius: 4px; }
+@keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; background: var(--paper); }
+.q { min-height: 46px; padding: 6px 8px; font: 600 0.9rem/1.2 var(--font-body); color: var(--ink); background: var(--linen); border: 0; border-radius: 10px; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease); }
+.q:hover { background: var(--ink); color: var(--on-dark); }
+.q:active { transform: scale(.97); }
+.q[disabled] { color: var(--ink-soft); background: var(--paper); cursor: not-allowed; opacity: .75; }
+
+/* Формы: поля могут иметь рамку */
+.form { margin-top: 1.75rem; max-width: 540px; }
+.field { display: grid; gap: 0.4rem; margin-bottom: 1.1rem; }
+.field label { font-weight: 600; font-size: 1rem; }
+.field input, .field textarea {
+  width: 100%; min-height: 52px; padding: 0.7rem 0.9rem; font: inherit; color: var(--ink);
+  background: var(--sheet); border: 2px solid transparent; border-radius: 0;
+  transition: border-color .2s var(--ease);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--red); }
+.on-dark .field input:focus, .on-dark .field textarea:focus { border-color: var(--on-dark); }
+.field textarea { min-height: 110px; resize: vertical; }
+.consent { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.95rem; line-height: 1.45; margin-bottom: 1.3rem; }
+.consent input { flex: none; width: 22px; height: 22px; margin-top: 0.1rem; accent-color: var(--red); }
+.on-dark .consent input { accent-color: var(--paper); }
+.form-status { margin-top: 1rem; font-weight: 600; min-height: 1.6em; }
+
+/* Партнёрам */
+.partners-grid { display: grid; gap: clamp(36px, 6vw, 96px); }
+@media (min-width: 960px) { .partners-grid { grid-template-columns: 6fr 5fr; align-items: start; } }
+.partners-grid .lede { margin-top: 1.75rem; color: var(--on-dark); }
+.partners-grid .form { margin-top: 0; }
+
+/* Подвал: имя возвращается во всю ширину */
+.foot { padding-block: clamp(56px, 8vw, 120px) 32px; overflow: clip; }
+.foot-word img { width: 100%; height: auto; }
+.foot-notes { margin-top: clamp(32px, 4vw, 56px); display: grid; gap: 12px; }
+.foot-notes p { font-size: 0.95rem; color: var(--ink-soft); max-width: 70ch; }
+
+/* Проверка возраста */
+.gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: var(--scrim); overflow-y: auto; }
+.gate-card { width: 100%; max-width: 480px; background: var(--paper); padding: clamp(28px, 5vw, 48px); box-shadow: 0 20px 60px rgba(0,0,0,.35); /* taste-skill-ignore: диалог — настоящий оверлей */ }
+.gate-card img { width: min(100%, 220px); margin-bottom: 1.5rem; }
+.gate-card h2 { font-size: 2.2rem; line-height: 1.05; margin-bottom: 0.6rem; }
+.gate-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.75rem; }
+
+/* Появление: только при включённом скрипте, контент не прячется без него */
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .rv.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .btn:hover, .steps li:hover, .menu li:hover, .phone:hover { transform: none; }
+  .hero-mill { transform: none !important; }
+  .msg { animation: none; }
+}
+</style>
+</head>
+<body>
+<!--
+  КАК РЕДАКТИРОВАТЬ
+  1. Названия сортов: найдите <ul class="menu"> ниже: название в <h3 class="sort-name">, описание в .sort-desc, цифры в .specs.
+     Бот в демо подхватывает названия оттуда сам.
+  2. Режимы: в самом низу файла, в скрипте, есть DEMO (пометки и текст «заявка не отправляется»)
+     и AGE_GATE (проверка 18+).
+  3. Блок «Сорта» и упоминания предзаказа и клуба в блоке «Бот» стоит показать юристу до запуска.
+     Блок можно скрыть целиком: добавьте атрибут hidden к <section id="sorta">.
+  4. Тексты, которые нужно подтвердить у владельца, помечены «ПРОВЕРИТЬ».
+  5. Прежняя версия страницы сохранена в index.v1-backup.html.
+-->
+<script>document.documentElement.classList.add('js');</script>
+<div id="page">
+
+<div class="demo"><div class="wrap">Демо-версия. Тексты и названия сортов временные, продажи ещё не открыты.</div></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#top" aria-label="Хартия, в начало страницы"><img src="assets/hartia-nadpis-dark.svg" alt="Хартия" width="1051" height="171"></a>
+    <nav class="nav" aria-label="Разделы сайта">
+      <a href="#hartia">Хартия</a>
+      <a href="#proizvodstvo">Производство</a>
+      <a href="#sorta">Сорта</a>
+      <a href="#gde">Где купить</a>
+      <a href="#bot">Бот</a>
+      <a href="https://t.me/hartiya72" target="_blank" rel="noopener">Канал</a>
+      <a class="btn btn-red btn-sm" href="#partners">Партнёрам</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="rv">Вода, солод, хмель и дрожжи. Больше ничего.</h1>
+    <div class="hero-row">
+      <div class="hero-text">
+        <!-- ПРОВЕРИТЬ: «вручную», «нефильтрованное», «без вкусовых добавок» (со слов владельца) -->
+        <p class="lede rv" style="--i:1">Частная пивоварня в Тюмени. Варим нефильтрованное пиво вручную, без вкусовых добавок.</p>
+        <div class="actions rv" style="--i:2">
+          <a class="btn btn-red" href="#bot">Узнать об открытии</a>
+          <a class="btn btn-quiet" href="#partners">Для баров и магазинов</a>
+        </div>
+        <p class="rv" style="--i:3;margin-top:1.25rem">Наш бот: <a href="https://t.me/hatriya72_bot" target="_blank" rel="noopener"><u>Telegram</u></a>, <a href="https://max.ru/se13813547_1_bot" target="_blank" rel="noopener"><u>MAX</u></a></p>
+      </div>
+      <div class="hero-mill rv" style="--i:2" id="mill">
+        <img src="assets/hartia-vertical-mill-landscape.webp" alt="Хартия. Частная пивоварня, Тюмень: красная мельница среди полей" width="1100" height="990">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="field-band on-red on-dark" id="hartia">
+  <div class="wrap charter">
+    <div class="charter-head">
+      <h2 class="h2 rv">Хартия пивоварни</h2>
+      <p class="lede rv" style="--i:1">Название обязывает. Вот четыре правила, по которым мы варим.</p>
+      <figure class="fig rv" style="--i:2">
+        <img src="assets/view-of-a-windmill.webp" width="1200" height="621" alt="Старая гравюра: ветряная мельница на холме и городок вдали">
+        <figcaption>Ветряная мельница, гравюра XVIII века. Архивная иллюстрация.</figcaption>
+      </figure>
+    </div>
+    <!-- ПРОВЕРИТЬ: все четыре статьи со слов владельца -->
+    <ol class="articles">
+      <li class="rv"><h3>Состав</h3><p>В пиво идут вода, солод, хмель и дрожжи. Вкусовых добавок в нём нет.</p></li>
+      <li class="rv"><h3>Ручная работа</h3><p>Основные операции на варке выполняет пивовар. Автоматики у нас минимум.</p></li>
+      <li class="rv"><h3>Живое пиво</h3><p>Мы не фильтруем пиво, поэтому оно может быть слегка мутным. Так задумано.</p></li>
+      <li class="rv"><h3>Свежесть</h3><p>Варим небольшими партиями и стараемся, чтобы пиво быстро доходило до вас.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="field-band" id="proizvodstvo">
+  <div class="wrap">
+    <div class="prod-head">
+      <h2 class="h2 rv">От зерна до кружки</h2>
+      <div class="prose rv" style="--i:1">
+        <p>Мельница на нашем знаке напоминает о зерне. Из зерна в деревнях делали и хлеб, и пиво. Состав простой, а ждать приходится долго.</p>
+        <p>Мы не торопим процесс и показываем его без прикрас.</p>
+        <!-- ПРОВЕРИТЬ: пересказ раздела «О пивоварне» из документа владельца -->
+        <p>Пивоварня основана в 2015 году. Мы хотим, чтобы тюменцы пили по-настоящему свежее пиво: между ёмкостью на пивоварне и вашей кружкой проходит как можно меньше времени.</p>
+      </div>
+    </div>
+    <!-- Временные архивные картинки. ПОДМЕНИТЬ своими фотографиями варочного цеха -->
+    <div class="plates">
+      <figure class="fig rv">
+        <img src="assets/interior-exterior-working-brewhouse-engraving.webp" width="1000" height="788" alt="Старая гравюра: пивоварня изнутри, чан, бочка и три работника">
+        <figcaption>Пивоварня, гравюра 1747 года. Архивная иллюстрация.</figcaption>
+      </figure>
+      <figure class="fig fig-wide rv" style="--i:1">
+        <img src="assets/hop-picking-lccn2003681572.webp" width="1400" height="960" alt="Цветная литография: сбор хмеля, люди среди высоких хмельников, телега с мешками">
+        <figcaption>Сбор хмеля, литография 1857 года. Архивная иллюстрация.</figcaption>
+      </figure>
+    </div>
+    <p class="steps-title rv">Как варится наше пиво</p>
+    <!-- ПРОВЕРИТЬ: этапы описаны в общем виде, уточнить под реальный процесс -->
+    <ol class="steps">
+      <li class="rv"><h3>Солод и вода</h3><p>Берём солод, измельчаем и смешиваем с горячей водой.</p></li>
+      <li class="rv" style="--i:1"><h3>Варка</h3><p>Полученное сусло варим с хмелем.</p></li>
+      <li class="rv" style="--i:2"><h3>Брожение</h3><p>Охлаждаем сусло, добавляем дрожжи и даём пиву побродить и отстояться.</p></li>
+      <li class="rv" style="--i:3"><h3>Розлив</h3><p>Готовое пиво разливаем.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ПРОВЕРИТЬ С ЮРИСТОМ: названия сортов и их описания в интернете могут считаться рекламой пива -->
+<section class="field-band on-ink on-dark" id="sorta">
+  <div class="wrap">
+    <div class="sorts-head">
+      <h2 class="h2 rv">Сорта</h2>
+      <p class="lede rv" style="--i:1">Четыре сорта живого нефильтрованного пива.</p>
+    </div>
+    <!-- Описания и цифры из документа владельца (Документ 47.pdf), опечатки исправлены. ПРОВЕРИТЬ С ЮРИСТОМ перед запуском -->
+    <ul class="menu">
+      <li class="sort rv">
+        <div><h3 class="sort-name">Слободское</h3><p class="sort-type">лагер</p></div>
+        <p class="sort-desc">Светлое нефильтрованное (живое) пиво с умеренной горчинкой и приятным солодовым ароматом. Сварено по традиционной технологии из качественного светлого солода. Осветление достигается естественным образом.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>11</dd></div>
+          <div><dt>Горечь, IBU</dt><dd>18</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>4,0</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Стольное</h3><p class="sort-type">лагер</p></div>
+        <p class="sort-desc">Светлое нефильтрованное (живое) пиво. Минимум горечи делает его мягким. Приятный солодовый аромат и продолжительное послевкусие.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>11,5</dd></div>
+          <div><dt>Горечь, IBU</dt><dd>10</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>4,2</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Чешское</h3><p class="sort-type">лагер</p></div>
+        <p class="sort-desc">Полутёмное, насыщенное, ароматное нефильтрованное (живое) пиво. Приятный хлебный аромат карамельного солода и продолжительное послевкусие.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>11,5</dd></div>
+          <div><dt>Горечь, IBU</dt><dd>20</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>4,2</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Жигулевское То Самое</h3><p class="sort-type">лагер</p></div>
+        <p class="sort-desc">Классический лагер на венском солоде и чувашском хмеле. Приятный хмелевой аромат и продолжительное послевкусие.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>10,5</dd></div>
+          <div><dt>Горечь, IBU</dt><dd>20</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>3,8</dd></div>
+        </dl>
+      </li>
+    </ul>
+    <p class="menu-note rv">Продажи ещё не открыты. Объём и места продажи появятся перед запуском.</p>
+  </div>
+</section>
+
+<section class="field-band on-linen" id="gde">
+  <div class="wrap where">
+    <div class="where-head">
+      <h2 class="h2 rv">Где найти свежее</h2>
+      <p class="lede rv" style="--i:1">Утром в пивоварне, вечером в стакане.</p>
+    </div>
+    <div class="where-body">
+      <!-- Карта 2ГИС подключается ключом DGIS_KEY в скрипте внизу. Без ключа или без WebGL показывается только панель. -->
+      <div class="map rv" id="map" role="region" aria-label="Карта точек, где есть свежее пиво">Карта 2ГИС не загрузилась. Точки показаны в списке справа.</div>
+      <aside class="panel rv" id="panel" aria-live="polite">
+        <ul class="shops" id="shops"></ul>
+        <div class="detail" id="detail" hidden>
+          <button type="button" class="back" id="back">← Все точки</button>
+          <h3 id="d-name"></h3>
+          <dl>
+            <div><dt>Вид заведения</dt><dd id="d-kind"></dd></div>
+            <div><dt>Адрес</dt><dd id="d-addr"></dd></div>
+            <div><dt>Ассортимент</dt><dd id="d-assort"></dd></div>
+          </dl>
+          <a class="btn btn-red" id="d-link" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        </div>
+      </aside>
+    </div>
+    <p class="where-note rv">Мы показываем только те точки, где пиво всегда свежее. Список ведёт сама пивоварня: точки добавляются и убираются.</p>
+  </div>
+</section>
+
+<section class="field-band" id="bot">
+  <div class="wrap bot-grid">
+    <div class="bot-copy">
+      <h2 class="h2 rv">Бот в Telegram и MAX</h2>
+      <div class="prose rv" style="--i:1">
+        <p>Пока бот рассказывает о пивоварне, показывает сорта и принимает заявки. Нажимайте кнопки в окне бота, чтобы увидеть, как это работает.</p>
+        <p>Позже в нём появятся:</p>
+      </div>
+      <div class="actions rv" style="--i:1">
+        <a class="btn btn-red" href="https://t.me/hatriya72_bot" target="_blank" rel="noopener">Открыть бота в Telegram</a>
+        <a class="btn btn-quiet" href="https://max.ru/se13813547_1_bot" target="_blank" rel="noopener">Открыть бота в MAX</a>
+      </div>
+      <!-- ПРОВЕРИТЬ С ЮРИСТОМ: предзаказ и рассылки о новых варках -->
+      <ul class="later rv" style="--i:2">
+        <li>предзаказ на самовывоз;</li>
+        <li>клуб друзей пивоварни с новостями.</li>
+      </ul>
+      <p class="form-title rv">Сообщить об открытии</p>
+      <form class="form rv" id="waitlist" data-demo>
+        <div class="field">
+          <label for="wl-contact">Телефон или Telegram</label>
+          <input id="wl-contact" name="contact" type="text" autocomplete="off" required>
+        </div>
+        <div class="consent">
+          <input id="wl-consent" name="consent" type="checkbox" required>
+          <label for="wl-consent">Даю согласие на обработку персональных данных</label>
+        </div>
+        <button class="btn btn-red" type="submit">Записаться в список</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="phone rv" aria-label="Демонстрация бота">
+      <div class="phone-inner">
+        <div class="phone-head"><strong>Хартия</strong><span>бот, демо</span></div>
+        <div class="chat" id="chat" aria-live="polite">
+          <div class="msg msg-bot">Здравствуйте! Это бот частной пивоварни Хартия из Тюмени. Выберите раздел.</div>
+        </div>
+        <div class="quick">
+          <button class="q" type="button" data-q="about">О пивоварне</button>
+          <button class="q" type="button" data-q="sorts">Сорта</button>
+          <button class="q" type="button" data-q="partner">Для баров и магазинов</button>
+          <button class="q" type="button" data-q="wait">Узнать об открытии</button>
+          <button class="q" type="button" disabled>Предзаказ, скоро</button>
+          <button class="q" type="button" disabled>Клуб друзей, скоро</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="field-band on-oxblood on-dark" id="partners">
+  <div class="wrap partners-grid">
+    <div>
+      <h2 class="h2 rv">Для баров и магазинов</h2>
+      <p class="lede rv" style="--i:1">Хотите, чтобы Хартия была у вас в меню или на полке? Оставьте заявку, мы работаем с барами, ресторанами и магазинами. Расскажем о сортах и условиях поставки.</p>
+      <figure class="fig rv" style="--i:2">
+        <img src="assets/tyumen-prokudin-gorsky-1912.webp" width="1000" height="943" alt="Цветной снимок 1912 года: пассажирский пароход у берега реки в Тюмени">
+        <figcaption>Тюмень, 1912 год. Фото Сергея Прокудина-Горского, общественное достояние.</figcaption>
+      </figure>
+    </div>
+    <form class="form rv" id="partner-form" data-demo>
+      <div class="field">
+        <label for="p-org">Название заведения или магазина</label>
+        <input id="p-org" name="org" type="text" autocomplete="organization" required>
+      </div>
+      <div class="field">
+        <label for="p-name">Контактное лицо</label>
+        <input id="p-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="p-contact">Телефон или Telegram</label>
+        <input id="p-contact" name="contact" type="text" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label for="p-msg">Комментарий</label>
+        <textarea id="p-msg" name="msg"></textarea>
+      </div>
+      <div class="consent">
+        <input id="p-consent" name="consent" type="checkbox" required>
+        <label for="p-consent">Даю согласие на обработку персональных данных</label>
+      </div>
+      <button class="btn" type="submit">Отправить заявку</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-word rv"><img src="assets/hartia-nadpis-red.svg" alt="Хартия. Частная пивоварня, Тюмень" width="1051" height="171"></div>
+    <div class="foot-notes">
+      <!-- Реквизиты организации добавить перед запуском -->
+      <!-- ПРОВЕРИТЬ: адрес (улица в файле реквизитов читается плохо), телефон и почту подтвердить у владельца. Банковские реквизиты на сайт не выносим. -->
+      <p>ООО «Хартия», ИНН 7224068390, ОГРН 1157232039150. Адрес, телефон и почта будут добавлены после подтверждения.</p>
+      <p>Архивные иллюстрации: гравюра пивоварни (1747), литография «Сбор хмеля» (1857), Popular Graphic Arts, Библиотека Конгресса; гравюра «Ветряная мельница», P. Benoist, The Metropolitan Museum of Art; фото Тюмени, С. М. Прокудин-Горский, 1912. Все в общественном достоянии или CC0; найдены через Wikimedia Commons, Met Open Access и rawpixel.</p>
+      <p>Бот: <a href="https://t.me/hatriya72_bot" target="_blank" rel="noopener">Telegram</a>, <a href="https://max.ru/se13813547_1_bot" target="_blank" rel="noopener">MAX</a></p>
+      <p>Канал: <a href="https://t.me/hartiya72" target="_blank" rel="noopener">Telegram</a></p>
+      <p>Чрезмерное употребление пива вредит вашему здоровью. Сайт предназначен для лиц старше 18 лет.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <img src="assets/hartia-nadpis-dark.svg" alt="Хартия">
+    <div id="gate-ask">
+      <h2 id="gate-title">Вам есть 18 лет?</h2>
+      <p>Сайт пивоварни предназначен для совершеннолетних.</p>
+      <div class="gate-actions">
+        <button class="btn btn-red" type="button" id="gate-yes">Да, мне есть 18</button>
+        <button class="btn btn-quiet" type="button" id="gate-no">Нет</button>
+      </div>
+    </div>
+    <div id="gate-denied" hidden>
+      <h2>Сайт доступен с 18 лет</h2>
+      <p>Приходите, когда вам исполнится 18.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Режимы. DEMO: формы ничего не отправляют. AGE_GATE: окно проверки возраста.
+  var DEMO = true;
+  var AGE_GATE = true;
+
+  var page = document.getElementById('page');
+  var gate = document.getElementById('gate');
+
+  function wasConfirmed() { try { return localStorage.getItem('hartia-18') === '1'; } catch (e) { return false; } }
+  function remember() { try { localStorage.setItem('hartia-18', '1'); } catch (e) {} }
+
+  function closeGate() {
+    gate.hidden = true;
+    page.inert = false;
+    document.body.style.overflow = '';
+  }
+  if (AGE_GATE && !wasConfirmed() && !/[?&]nogate/.test(location.search)) {
+    gate.hidden = false;
+    page.inert = true;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('gate-yes').focus();
+  }
+  document.getElementById('gate-yes').addEventListener('click', function () { remember(); closeGate(); });
+  document.getElementById('gate-no').addEventListener('click', function () {
+    document.getElementById('gate-ask').hidden = true;
+    document.getElementById('gate-denied').hidden = false;
+  });
+
+  // Появление блоков при прокрутке. Без скрипта всё видно сразу.
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(rv, function (n) { io.observe(n); });
+  } else {
+    Array.prototype.forEach.call(rv, function (n) { n.classList.add('in'); });
+  }
+
+  // Мельница на главном экране медленно уходит вверх при прокрутке
+  var mill = document.getElementById('mill');
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (mill && !calm) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = Math.min(window.scrollY, 900);
+        mill.firstElementChild.style.transform = 'translateY(' + (-y * 0.08).toFixed(1) + 'px)';
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+
+  // Точки продажи ведёт сама пивоварня: показываем только те, где пиво всегда свежее. Точки только добавляются и убираются.
+  // Названия, адреса и координаты взяты из карточек 2ГИС. ll: [широта, долгота]. kind: вид заведения из 2ГИС.
+  // assortment: список сортов, которые есть в этой точке. Пока владелец не прислал, показывается «уточняется».
+  // Tmn beer: в 2ГИС это заведение значится как «БТ крафт»; уточнить у владельца, как называть.
+  // Barrel (Бакинских Комиссаров, 3) владелец планирует сделать своим магазином: пока в 2ГИС это бар.
+  var DGIS_KEY = 'e0611ca9-d6da-4a08-a146-e7b1ad6a1213'; // демо-ключ MapGL API 2ГИС, создан 29.10.2026 и действует 1 месяц (до 29.11.2026). Заменить на рабочий ключ.
+  var SHOPS = [
+    { name: 'Tmn beer (БТ крафт)', kind: 'магазин ремесленных напитков', addr: 'Тюмень, ул. Льва Толстого, 64', ll: [57.166323, 65.491643], assortment: null },
+    { name: 'Все свои', kind: 'магазин разливных напитков', addr: 'Тюмень, ул. Болотникова, 26', ll: [57.16107, 65.496714], assortment: null },
+    { name: 'Barrel', kind: 'бар', addr: 'Тюмень, ул. Бакинских Комиссаров, 3', ll: [57.162903, 65.480476], assortment: null },
+    { name: 'Пивзаправка', kind: 'магазин разливного пива', addr: 'Тюмень, Московский тракт, 143 к4', ll: [57.131148, 65.489267], assortment: null },
+    { name: 'Буксир', kind: 'бар-магазин', addr: 'Тюмень, ул. Вересковая, 15 к2, цокольный этаж', ll: [57.147098, 65.649781], assortment: null }
+  ];
+  var shopList = document.getElementById('shops'), detail = document.getElementById('detail'), panel = document.getElementById('panel');
+  var gmap = null, closing = false;
+
+  function fitAll() {
+    var pts = SHOPS.filter(function (x) { return x.ll; });
+    var lats = pts.map(function (x) { return x.ll[0]; }), lons = pts.map(function (x) { return x.ll[1]; });
+    gmap.setCenter([(Math.min.apply(null, lons) + Math.max.apply(null, lons)) / 2, (Math.min.apply(null, lats) + Math.max.apply(null, lats)) / 2]);
+    gmap.setZoom(11.5);
+  }
+  function showAll() {
+    detail.hidden = true; shopList.hidden = false; panel.scrollTop = 0;
+    if (gmap) fitAll();
+  }
+  function select(i) {
+    var x = SHOPS[i];
+    document.getElementById('d-name').textContent = x.name;
+    document.getElementById('d-kind').textContent = x.kind || '';
+    document.getElementById('d-addr').textContent = x.addr;
+    document.getElementById('d-assort').textContent = x.assortment && x.assortment.length ? x.assortment.join(', ') : 'Уточняется';
+    document.getElementById('d-link').href = 'https://2gis.ru/tyumen/search/' + encodeURIComponent(x.name + ' ' + x.addr);
+    shopList.hidden = true; detail.hidden = false; panel.scrollTop = 0;
+    if (gmap && x.ll) { gmap.setCenter([x.ll[1], x.ll[0]]); gmap.setZoom(15); }
+    if (window.innerWidth < 960) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  SHOPS.forEach(function (x, idx) {
+    var li = document.createElement('li');
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'shop';
+    var n = document.createElement('span'); n.className = 's-name'; n.textContent = x.name;
+    var k = document.createElement('span'); k.textContent = x.kind || '';
+    var a = document.createElement('span'); a.textContent = x.addr;
+    b.appendChild(n); if (x.kind) b.appendChild(k); b.appendChild(a);
+    b.addEventListener('click', function () { select(idx); });
+    li.appendChild(b); shopList.appendChild(li);
+  });
+  document.getElementById('back').addEventListener('click', showAll);
+
+  var pinned = SHOPS.filter(function (x) { return x.ll; });
+  if (DGIS_KEY && pinned.length) {
+    var sc = document.createElement('script');
+    sc.src = 'https://mapgl.2gis.com/api/js/v1';
+    sc.onload = function () {
+      var box = document.getElementById('map');
+      if (mapgl.notSupportedReason && mapgl.notSupportedReason()) return;   // нет WebGL: остаётся панель со списком
+      box.textContent = ''; box.setAttribute('data-live', '1');
+      gmap = new mapgl.Map('map', { center: [65.52, 57.15], zoom: 11.5, key: DGIS_KEY });
+      fitAll();
+      SHOPS.forEach(function (x, idx) {
+        if (!x.ll) return;
+        var m = new mapgl.Marker(gmap, {
+          coordinates: [x.ll[1], x.ll[0]],
+          label: { text: x.name, fontSize: 14, relativeAnchor: [0.5, 0], offset: [0, 4] }
+        });
+        m.on('click', function () { closing = true; setTimeout(function () { closing = false; }, 50); select(idx); });
+      });
+      gmap.on('click', function () { if (!closing && !detail.hidden) showAll(); });
+    };
+    document.head.appendChild(sc);
+  }
+
+  // Демо-бот. Названия сортов берутся со страницы.
+  var chat = document.getElementById('chat');
+  function sortNames() {
+    return Array.prototype.map.call(document.querySelectorAll('.sort-name'), function (n) { return n.textContent.trim(); });
+  }
+  var replies = {
+    about: function () { return 'Вода, солод, хмель и дрожжи. Пиво нефильтрованное, без вкусовых добавок. Варим в Тюмени с 2015 года.'; },
+    sorts: function () { return 'Наши сорта: ' + sortNames().join(', ') + '. Описание, плотность, горечь и крепость каждого есть на странице в разделе «Сорта».'; },
+    partner: function () { return 'Оставьте заявку для заведения: название, контактное лицо и телефон или Telegram. Мы расскажем о сортах и условиях поставки.'; },
+    wait: function () { return 'Запишем вас в список и сообщим об открытии продаж в Тюмени. Нужно согласие на обработку персональных данных.'; }
+  };
+  function addMsg(text, cls) {
+    var d = document.createElement('div');
+    d.className = 'msg ' + cls;
+    d.textContent = text;
+    chat.appendChild(d);
+    chat.scrollTop = chat.scrollHeight;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.q[data-q]'), function (b) {
+    b.addEventListener('click', function () {
+      addMsg(b.textContent, 'msg-me');
+      addMsg(replies[b.getAttribute('data-q')](), 'msg-bot');
+    });
+  });
+
+  // Формы
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-demo]'), function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var s = f.querySelector('.form-status');
+      if (DEMO) {
+        s.textContent = 'Это демо-версия: заявка никуда не отправляется. После подключения бота она придёт менеджеру.';
+      } else {
+        s.textContent = 'Спасибо, мы свяжемся с вами.';
+        f.reset();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

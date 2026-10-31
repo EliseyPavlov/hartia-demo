@@ -1,0 +1,6 @@
+# Пока сайт демо, поисковикам вход закрыт. При запуске заменить на:
+# User-agent: *
+# Allow: /
+# Sitemap: https://АДРЕС/sitemap.xml
+User-agent: *
+Disallow: /
