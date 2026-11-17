@@ -1,66 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хартия | Ссылки</title>
-    <!-- Иконка вкладки -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Подключаем ваш основной файл стилей -->
-    <link rel="stylesheet" href="assets/site.css">
-    
-    <style>
-        /* Дополнительные стили, чтобы отцентрировать контент хаба */
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            /* Фон берется из вашего site.css */
-            background-color: var(--paper); 
-            padding: 24px;
-        }
-        .hub-container {
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            text-align: center;
-        }
-        .hub-logo {
-            width: 100%;
-            max-width: 280px; /* Ограничиваем ширину логотипа */
-            margin: 0 auto 32px auto;
-        }
-        /* Делаем ваши стандартные кнопки на всю ширину для удобства на мобилках */
-        .hub-container .btn {
-            width: 100%;
-            font-size: 1.1rem;
-            padding: 1rem;
-        }
-        .hub-divider {
-            height: 2px;
-            background-color: var(--linen); /* Цвет полосы из вашего гайдбука */
-            margin: 12px 0;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Хартия — все ссылки</title>
+<!-- Страница-мультиссылка для печати QR в магазинах-партнёрах. -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F2F0EA">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<!-- QR ведёт на эту страницу. Сменился адрес — перегенерируй:
+     python -c "import qrcode; qr=qrcode.QRCode(box_size=10,border=2); qr.add_data('НОВЫЙ_URL'); qr.make(fit=True); qr.make_image(fill_color='#2b2620',back_color='#ffffff').save('assets/qr-links.png')" -->
+<style>
+  body { display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; background: var(--linen); color: var(--ink); padding: clamp(24px, 6vw, 48px) 20px; }
+  .hub { width: 100%; max-width: 420px; display: flex; flex-direction: column; text-align: center; }
+  .hub-logo { width: 200px; margin: 0 auto 6px; }
+  .hub-tagline { font: 400 0.95rem/1.4 var(--font-body); color: var(--ink-soft); margin: 0 0 clamp(24px, 5vw, 40px); }
+  .hub .btn { width: 100%; padding: 1.05rem 1.25rem; font-size: 1.1rem; margin: 0 0 14px; }
+  .hub-qr { margin: clamp(24px, 6vw, 40px) auto 0; background: var(--paper); padding: 18px 18px 14px; max-width: 300px; }
+  .hub-qr img { width: 200px; height: 200px; display: block; margin: 0 auto; }
+  .hub-qr p { font: 400 0.9rem/1.45 var(--font-body); color: var(--ink-soft); margin: 12px 0 0; }
+  .hub-note { margin-top: clamp(28px, 6vw, 48px); font: 400 0.85rem/1.5 var(--font-body); color: var(--ink-soft); }
+</style>
 </head>
 <body>
-    <div class="hub-container">
-        <!-- Тот самый логотип с красной мельницей -->
-        <img src="hartia-vertical-mill-landscape.webp" alt="Пивоварня Хартия" class="hub-logo">
-        
-        <!-- Используем классы кнопок из вашего site.css (.btn и .btn-red) -->
-        <a href="https://t.me/hatriya72_bot" class="btn btn-red" target="_blank">Аренда кег (Telegram)</a>
-        <a href="https://web.max.ru/798088538" class="btn" target="_blank">Аренда кег (MAX)</a>
-        
-        <div class="hub-divider"></div>
-        
-        <!-- Второстепенные кнопки (класс .btn-quiet) -->
-        <a href="https://t.me/hartiya72" class="btn btn-quiet" target="_blank">Наш Telegram-канал</a>
-        <a href="https://eliseypavlov.github.io/hartia-demo/" class="btn btn-quiet">Перейти на сайт</a>
+  <div class="hub">
+    <img src="assets/hartia-vertical-blades.svg" alt="Хартия" class="hub-logo">
+    <p class="hub-tagline">Частная пивоварня, Тюмень. Кеги в аренду — пустые, наполнение на месте.</p>
+
+    <a class="btn btn-red" href="https://t.me/hatriya72_bot" target="_blank" rel="noopener">Сделать заказ в Telegram</a>
+    <a class="btn" href="https://eliseypavlov.github.io/hartia-demo/arenda-keg.html">Аренда кег</a>
+    <a class="btn" href="https://eliseypavlov.github.io/hartia-demo/">Главный сайт</a>
+    <a class="btn btn-quiet" href="https://2gis.ru/tyumen/routeSearch/rsType/car/from/~to=57.162903%2C65.480476" target="_blank" rel="noopener">Маршрут до магазина Баррель</a>
+
+    <div class="hub-qr">
+      <img src="assets/qr-links.png" width="200" height="200" alt="QR-код со ссылкой на эту страницу">
+      <p>Наведите камеру — откроются все ссылки пивоварни. Распечатайте и оставьте на стойке магазина.</p>
     </div>
+
+    <p class="hub-note">Чрезмерное употребление пива вредит вашему здоровью. 18+<br>ООО «Хартия», ИНН 7224068390</p>
+  </div>
 </body>
 </html>
