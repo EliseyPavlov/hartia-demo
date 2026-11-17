@@ -285,9 +285,9 @@ a { color: inherit; }
 
 /* Аренда кег */
 .kegs { margin-top: clamp(32px, 5vw, 64px); display: grid; gap: 12px; }
-.keg { background: var(--paper); display: grid; }
+.keg { display: grid; }
 @media (min-width: 800px) { .keg { grid-template-columns: minmax(260px, 400px) 1fr; } }
-.keg-stage { background: var(--sheet); aspect-ratio: 7 / 9; display: grid; touch-action: pan-y; user-select: none; cursor: grab; }
+.keg-stage { background: transparent; aspect-ratio: 7 / 9; display: grid; touch-action: pan-y; user-select: none; cursor: grab; }
 .keg-stage:active { cursor: grabbing; }
 .keg-stage img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 .keg-views { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px; background: var(--paper); }
