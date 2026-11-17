@@ -303,3 +303,21 @@ a { color: inherit; }
 .field select { width: 100%; min-height: 52px; padding: 0.7rem 0.9rem; font: inherit; color: var(--ink); background: var(--sheet); border: 2px solid transparent; border-radius: 0; transition: border-color .2s var(--ease); }
 .field select:focus { outline: none; border-color: var(--red); }
 .on-dark .field select:focus { border-color: var(--on-dark); }
+
+/* --- Apple-style Keg Section --- */
+.apple-style-kegs { text-align: center; padding: 5rem 0; }
+.apple-header { margin-bottom: 3rem; }
+.apple-header .product-title { font-size: 1.5rem; font-weight: 400; color: var(--text-muted, #555); margin-top: 0.5rem; }
+.apple-hero { display: flex; justify-content: center; margin-bottom: 4rem; }
+.keg-stage-clear { background: transparent; border: none; box-shadow: none; display: inline-block; }
+.apple-keg-img { max-width: 100%; height: auto; width: 380px; filter: drop-shadow(0px 25px 35px rgba(0, 0, 0, 0.15)); transition: transform 0.4s ease; }
+.apple-keg-img:hover { transform: scale(1.03); }
+.apple-specs { display: flex; justify-content: center; gap: 5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+.spec-item { display: flex; flex-direction: column; align-items: center; }
+.spec-value { font-size: 2.5rem; font-weight: 600; color: var(--text-dark, #111); margin-bottom: 0.5rem; line-height: 1; }
+.spec-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-muted, #888); text-transform: uppercase; }
+.apple-style-kegs .kegs-note { max-width: 600px; margin: 0 auto; color: var(--text-muted, #666); font-size: 0.95rem; line-height: 1.5; }
+@media (max-width: 600px) {
+  .apple-specs { gap: 2.5rem; flex-direction: column; }
+  .apple-keg-img { width: 280px; }
+}
