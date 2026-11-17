@@ -162,28 +162,7 @@
     });
   }
 
-  // Кега: переключение видов кнопками и свайпом
-  each(document.querySelectorAll('[data-views]'), function (box) {
-    var stage = box.querySelector('.keg-stage'), img = stage.querySelector('img');
-    var btns = box.querySelectorAll('.keg-views button'), cur = 0, startX = null;
-    var show = function (i) {
-      cur = (i + btns.length) % btns.length;
-      img.src = btns[cur].getAttribute('data-src'); img.alt = btns[cur].getAttribute('data-alt');
-      each(btns, function (b, j) { b.setAttribute('aria-pressed', j === cur ? 'true' : 'false'); });
-      stage.dispatchEvent(new CustomEvent('keg:view', { detail: cur }));
-    };
-    each(btns, function (b, j) {
-      b.addEventListener('click', function () { show(j); });
-      var pre = new Image(); pre.src = b.getAttribute('data-src');   // заранее, чтобы вид менялся без паузы
-    });
-    stage.addEventListener('pointerdown', function (e) { if (!stage.dataset.live) startX = e.clientX; });
-    stage.addEventListener('pointerup', function (e) {
-      if (startX === null) return;
-      var dx = e.clientX - startX; startX = null;
-      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
-    });
-    stage.addEventListener('pointercancel', function () { startX = null; });
-  });
+  // Ракурсы кеги больше не переключаются: одна картинка спереди, 3D-кега вращается своим drag'ом в keg3d.js
 
   // Бронь кеги: нельзя выбрать дату раньше сегодняшней
   var kegDate = $('k-date');
