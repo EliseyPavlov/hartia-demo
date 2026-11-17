@@ -1,0 +1,305 @@
+/*
+  Идея: «Хартия» значит «устав». Страница читается как устав пивоварни, а полосы
+  меняют цвет целиком, как разделы документа: бумага, красный знака, чернила
+  логотипа, тёмно-красный. Красный и тёмно-красный берутся из лопастей мельницы.
+  Цвета только из гайдбука. Линий, градиентов и теней покоя нет: разделы
+  отделяются сменой тона.
+*/
+:root {
+  --paper: #F2F0EA;      /* основной фон из гайдбука */
+  --sheet: #FAF8F3;      /* поля форм, лист */
+  --linen: #E4DFD2;      /* вторая ступень бумаги */
+  --ink: #282826;        /* чёрный логотипа */
+  --ink-soft: #3F3E39;   /* второстепенный текст на бумаге */
+  --red: #B41018;        /* красный лопастей */
+  --oxblood: #690C1B;    /* тёмно-красный */
+  --on-dark: #F2F0EA;    /* текст на цветных полосах */
+  --scrim: rgba(40, 40, 38, 0.78);
+  --font-display: 'Old Standard TT', 'Times New Roman', Georgia, serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+  --gutter: clamp(16px, 3.6vw, 56px);
+  --section: clamp(88px, 12vw, 190px);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.on-dark :focus-visible { outline-color: var(--on-dark); }
+
+.wrap { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter); }
+.field-band { padding-block: var(--section); }
+.on-red { background: var(--red); color: var(--on-dark); }
+.on-ink { background: var(--ink); color: var(--on-dark); }
+.on-oxblood { background: var(--oxblood); color: var(--on-dark); }
+.on-linen { background: var(--linen); }
+
+.h2 { font-size: clamp(2.5rem, 7.2vw, 7rem); line-height: 0.96; letter-spacing: -0.025em; }
+.lede { font-size: clamp(1.1rem, 1.5vw, 1.35rem); line-height: 1.55; max-width: 44ch; }
+
+/* Кнопки: плоские, квадратные */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 0.7rem 1.7rem; border: 0; border-radius: 0;
+  background: var(--ink); color: var(--on-dark);
+  font: 600 1.0625rem/1.2 var(--font-body); text-decoration: none; cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(1px); }
+.btn-red { background: var(--red); }
+.btn-red:hover { background: var(--oxblood); }
+.btn-quiet { background: var(--linen); color: var(--ink); }
+.btn-quiet:hover { background: var(--ink); color: var(--on-dark); }
+.on-dark .btn { background: var(--paper); color: var(--ink); }
+.on-dark .btn:hover { background: var(--ink); color: var(--on-dark); }
+.btn-sm { min-height: 42px; padding: 0.35rem 1.1rem; font-size: 0.95rem; }
+
+/* Пометка демо */
+.demo { background: var(--ink); color: var(--on-dark); font-size: 0.875rem; line-height: 1.4; padding-block: 9px; }
+
+/* Шапка: слово, ссылки, одно действие */
+.top { position: sticky; top: 0; z-index: 20; background: var(--paper); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+.brand img { width: clamp(124px, 13vw, 168px); height: auto; }
+.nav { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 38px); }
+.nav a:not(.btn) { text-decoration: none; font-size: 1rem; padding-block: 8px; text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: text-decoration-color .2s var(--ease); }
+.nav a:not(.btn):hover { text-decoration-color: currentColor; }
+
+/* Главный экран */
+.hero { padding-block: clamp(24px, 3.5vw, 56px) clamp(56px, 8vw, 120px); overflow: clip; }
+.hero h1 { font-size: clamp(1.5rem, 7.4vw, 7.6rem); line-height: 0.96; letter-spacing: -0.03em; }
+.hero-row { display: grid; gap: clamp(32px, 5vw, 72px); margin-top: clamp(12px, 1.5vw, 24px); align-items: end; }
+@media (min-width: 900px) { .hero-row { grid-template-columns: 1fr minmax(380px, 0.9fr); } }
+.hero-text { display: grid; gap: 2rem; justify-items: start; padding-bottom: clamp(0px, 2vw, 32px); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-mill { justify-self: end; width: min(100%, 560px); will-change: transform; }
+.hero-mill img { width: 100%; }
+
+/* Хартия: красное поле, четыре статьи */
+.charter { display: grid; gap: clamp(40px, 7vw, 112px); }
+@media (min-width: 960px) { .charter { grid-template-columns: 5fr 6fr; align-items: start; } .charter-head { position: sticky; top: 110px; } }
+.charter-head .lede { margin-top: 1.75rem; }
+.articles { display: grid; gap: clamp(36px, 5vw, 64px); }
+.articles h3 { font-size: clamp(1.9rem, 3.6vw, 3.1rem); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 0.6rem; }
+.articles p { font-size: 1.1875rem; max-width: 40ch; }
+
+/* Картинки: архивные гравюры и снимки, квадратные, с подписью */
+.fig { margin: 0; }
+.fig img { width: 100%; height: 100%; object-fit: cover; }
+.fig figcaption { margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.4; }
+.charter-head .fig { margin-top: clamp(32px, 4vw, 56px); max-width: 520px; }
+.charter-head .fig img { height: auto; }
+.on-dark .fig figcaption { color: var(--on-dark); }
+.partners-grid .fig { margin-top: clamp(32px, 4vw, 56px); max-width: 560px; }
+.partners-grid .fig img { height: auto; }
+.plates { margin-top: clamp(40px, 6vw, 88px); display: grid; gap: 12px; }
+@media (min-width: 900px) { .plates { grid-template-columns: 1fr 1.5fr; } }
+.plates .fig img { aspect-ratio: 4 / 3; }
+.plates .fig-wide img { aspect-ratio: auto; height: 100%; min-height: 240px; }
+@media (max-width: 899px) { .plates .fig-wide img { aspect-ratio: 16 / 9; height: auto; } }
+
+/* Производство */
+.prod-head { display: grid; gap: clamp(28px, 4vw, 56px); }
+@media (min-width: 960px) { .prod-head { grid-template-columns: 6fr 5fr; align-items: end; } }
+.prod-head .prose { display: grid; gap: 1rem; font-size: 1.1875rem; max-width: 50ch; }
+.steps-title { margin-top: clamp(56px, 8vw, 112px); font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.steps { margin-top: 1.5rem; display: grid; gap: 12px; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } .steps li { min-height: 260px; } }
+.steps li { padding: clamp(22px, 2.4vw, 34px); display: grid; gap: 0.7rem; align-content: start; transition: transform .3s var(--ease); }
+.steps li:hover { transform: translateY(-6px); }
+.steps li:nth-child(1) { background: var(--linen); }
+.steps li:nth-child(2) { background: var(--red); color: var(--on-dark); }
+.steps li:nth-child(3) { background: var(--ink); color: var(--on-dark); }
+.steps li:nth-child(4) { background: var(--oxblood); color: var(--on-dark); }
+.steps h3 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1.05; }
+
+/* Сорта: четыре строки, название, описание и цифры */
+.sorts-head { display: grid; gap: 1.5rem; }
+.sorts-head .lede { color: var(--on-dark); }
+.menu { margin-top: clamp(40px, 6vw, 80px); display: grid; gap: clamp(32px, 4vw, 48px); }
+.sort { display: grid; gap: 1.5rem 3rem; padding: clamp(24px, 3.5vw, 48px); background: #34342F; transition: background-color .3s var(--ease), transform .35s var(--ease); }
+.sort:nth-child(odd) { background: #2F2F2C; }
+.sort:hover { background: var(--oxblood); transform: translateX(clamp(4px, 1vw, 16px)); }
+@media (min-width: 1000px) { .sort { grid-template-columns: 5fr 4fr 3fr; align-items: start; } }
+.sort-name { font-size: clamp(2.4rem, 6vw, 5.8rem); line-height: 0.98; letter-spacing: -0.03em; }
+.sort-type { margin-top: 0.9rem; display: inline-block; background: var(--red); color: var(--on-dark); padding: 0.2rem 0.8rem; font-size: 1rem; }
+.sort-desc { font-size: 1.1875rem; max-width: 40ch; }
+.specs { margin: 0; display: grid; gap: 1rem; }
+.specs div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.specs dt { font-size: 1rem; }
+.specs dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 2.4vw, 2.3rem); line-height: 1; white-space: nowrap; }
+.menu-note { margin-top: clamp(32px, 4vw, 56px); max-width: 56ch; font-size: 1.125rem; }
+
+/* Где найти свежее: карта 2ГИС и список точек */
+.where { display: grid; gap: clamp(28px, 5vw, 64px); }
+.where-head .lede { margin-top: 1.5rem; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2; max-width: 28ch; }
+.where-body { --map-h: clamp(420px, 68vh, 640px); display: grid; gap: 12px; }
+@media (min-width: 960px) { .where-body { grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr); align-items: start; } .panel { height: var(--map-h); overflow-y: auto; } }
+.map { height: var(--map-h); background: var(--paper); display: grid; place-items: center; padding: 24px; text-align: center; }
+.map[data-live] { padding: 0; display: block; }
+.panel { background: var(--paper); }
+.shops { display: grid; gap: 8px; padding: 8px; list-style: none; margin: 0; }
+.shops[hidden], .detail[hidden] { display: none; }
+.shop { display: grid; gap: 0.15rem; width: 100%; padding: 16px 18px; border: 0; background: var(--sheet); color: var(--ink); text-align: left; font: inherit; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease); }
+.shop:hover { background: var(--red); color: var(--on-dark); }
+.shop .s-name { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1.1; }
+.detail { padding: clamp(20px, 2.4vw, 32px); display: grid; gap: 0.9rem; align-content: start; }
+.detail .back { justify-self: start; border: 0; background: var(--linen); color: var(--ink); min-height: 40px; padding: 0.4rem 1rem; font: 600 0.95rem/1.2 var(--font-body); cursor: pointer; }
+.detail .back:hover { background: var(--ink); color: var(--on-dark); }
+.detail h3 { font-size: clamp(1.8rem, 2.6vw, 2.4rem); line-height: 1.05; }
+.detail dl { margin: 0; display: grid; gap: 0.9rem; }
+.detail dt { font-weight: 600; }
+.detail dd { margin: 0.1rem 0 0; font-size: 1.1rem; }
+.detail .btn { justify-self: start; }
+.where-note { max-width: 62ch; font-size: 1rem; }
+
+/* Бот */
+.bot-grid { display: grid; gap: clamp(40px, 6vw, 96px); }
+@media (min-width: 960px) { .bot-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; } }
+.bot-copy .prose { margin-top: 1.75rem; display: grid; gap: 1rem; font-size: 1.1875rem; max-width: 46ch; }
+.later { margin-top: 1rem; display: grid; gap: 0.5rem; font-size: 1.1875rem; }
+.later li { padding-left: 1.5rem; position: relative; }
+.later li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.7rem; height: 0.7rem; background: var(--red); }
+.form-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-top: clamp(40px, 5vw, 64px); }
+.phone { width: 100%; max-width: 400px; justify-self: center; background: var(--ink); border-radius: 30px; padding: 10px; transition: transform .4s var(--ease); }
+.phone:hover { transform: rotate(-1deg) translateY(-4px); }
+.phone-inner { background: var(--sheet); border-radius: 22px; overflow: hidden; }
+.phone-head { background: var(--red); color: var(--on-dark); padding: 14px 18px; display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; }
+.phone-head strong { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0.04em; }
+.chat { display: flex; flex-direction: column; gap: 10px; padding: 16px; min-height: 300px; max-height: 360px; overflow-y: auto; }
+.msg { max-width: 88%; padding: 0.6rem 0.9rem; border-radius: 16px; font-size: 0.95rem; line-height: 1.45; overflow-wrap: anywhere; animation: pop .3s var(--ease); }
+.msg-bot { align-self: flex-start; background: var(--linen); border-bottom-left-radius: 4px; }
+.msg-me { align-self: flex-end; background: var(--red); color: var(--on-dark); border-bottom-right-radius: 4px; }
+@keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; background: var(--paper); }
+.q { min-height: 46px; padding: 6px 8px; font: 600 0.9rem/1.2 var(--font-body); color: var(--ink); background: var(--linen); border: 0; border-radius: 10px; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease), transform .15s var(--ease); }
+.q:hover { background: var(--ink); color: var(--on-dark); }
+.q:active { transform: scale(.97); }
+.q[disabled] { color: var(--ink-soft); background: var(--paper); cursor: not-allowed; opacity: .75; }
+
+/* Формы: поля могут иметь рамку */
+.form { margin-top: 1.75rem; max-width: 540px; }
+.field { display: grid; gap: 0.4rem; margin-bottom: 1.1rem; }
+.field label { font-weight: 600; font-size: 1rem; }
+.field input, .field textarea {
+  width: 100%; min-height: 52px; padding: 0.7rem 0.9rem; font: inherit; color: var(--ink);
+  background: var(--sheet); border: 2px solid transparent; border-radius: 0;
+  transition: border-color .2s var(--ease);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--red); }
+.on-dark .field input:focus, .on-dark .field textarea:focus { border-color: var(--on-dark); }
+.field textarea { min-height: 110px; resize: vertical; }
+.consent { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.95rem; line-height: 1.45; margin-bottom: 1.3rem; }
+.consent input { flex: none; width: 22px; height: 22px; margin-top: 0.1rem; accent-color: var(--red); }
+.on-dark .consent input { accent-color: var(--paper); }
+.form-status { margin-top: 1rem; font-weight: 600; min-height: 1.6em; }
+
+/* Партнёрам */
+.partners-grid { display: grid; gap: clamp(36px, 6vw, 96px); }
+@media (min-width: 960px) { .partners-grid { grid-template-columns: 6fr 5fr; align-items: start; } }
+.partners-grid .lede { margin-top: 1.75rem; color: var(--on-dark); }
+.partners-grid .form { margin-top: 0; }
+
+/* Подвал: имя возвращается во всю ширину */
+.foot { padding-block: clamp(56px, 8vw, 120px) 32px; overflow: clip; }
+.foot-word img { width: 100%; height: auto; }
+.foot-notes { margin-top: clamp(32px, 4vw, 56px); display: grid; gap: 12px; }
+.foot-notes p { font-size: 0.95rem; color: var(--ink-soft); max-width: 70ch; }
+
+/* Проверка возраста */
+.gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px; background: var(--scrim); overflow-y: auto; }
+.gate-card { width: 100%; max-width: 480px; background: var(--paper); padding: clamp(28px, 5vw, 48px); box-shadow: 0 20px 60px rgba(0,0,0,.35); /* taste-skill-ignore: диалог — настоящий оверлей */ }
+.gate-card img { width: min(100%, 220px); margin-bottom: 1.5rem; }
+.gate-card h2 { font-size: 2.2rem; line-height: 1.05; margin-bottom: 0.6rem; }
+.gate-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.75rem; }
+
+/* Появление: только при включённом скрипте, контент не прячется без него */
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .rv.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .btn:hover, .steps li:hover, .menu li:hover, .phone:hover, .tile:hover { transform: none; }
+  .hero-mill { transform: none !important; }
+  .msg { animation: none; }
+}
+
+/* Меню разделов: текущая страница подчёркнута, на узком экране выпадает по кнопке */
+.nav a[aria-current="page"]:not(.btn) { text-decoration-color: currentColor; }
+.menu-btn { display: none; min-height: 42px; padding: 0.35rem 1rem; border: 0; background: var(--ink); color: var(--on-dark); font: 600 0.95rem/1.2 var(--font-body); cursor: pointer; }
+@media (max-width: 1099px) {
+  .js .menu-btn { display: inline-flex; align-items: center; }
+  .js .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--gutter) 20px; background: var(--paper); }
+  .js .nav.open { display: flex; }
+  .js .nav a:not(.btn) { display: flex; align-items: center; min-height: 48px; font-size: 1.15rem; }
+  .js .nav .btn { margin-top: 12px; }
+  .nav { flex-wrap: wrap; }
+}
+
+/* Плитки разделов на главной */
+.home-tiles { padding-bottom: var(--section); }
+.tiles { display: grid; gap: 12px; }
+@media (min-width: 900px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
+.tile { display: grid; gap: 1.2rem; align-content: space-between; min-height: 260px; padding: clamp(22px, 2.4vw, 34px); text-decoration: none; transition: transform .3s var(--ease); }
+.tile:hover { transform: translateY(-6px); }
+.tile:nth-child(1) { background: var(--linen); }
+.tile:nth-child(2) { background: var(--red); color: var(--on-dark); }
+.tile:nth-child(3) { background: var(--ink); color: var(--on-dark); }
+.tile:nth-child(4) { background: var(--oxblood); color: var(--on-dark); }
+.tile:nth-child(5) { background: var(--linen); }
+.tile:nth-child(6) { background: var(--red); color: var(--on-dark); }
+.tile h2 { font-size: clamp(1.7rem, 2.4vw, 2.2rem); line-height: 1.05; margin-bottom: 0.6rem; }
+.tile .go { font-weight: 600; }
+
+/* Основной магазин: красная полоса на главной и выделенная точка в списке */
+.store-grid { display: grid; gap: clamp(28px, 5vw, 72px); }
+@media (min-width: 960px) { .store-grid { grid-template-columns: 1fr 1fr; align-items: end; } }
+.store-info { display: grid; gap: 1.25rem; justify-items: start; font-size: 1.1875rem; max-width: 46ch; }
+.store-addr { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.1; }
+.store-lede { margin-top: 1.5rem; }
+.shop-main { background: var(--red); color: var(--on-dark); }
+.shop-main:hover { background: var(--oxblood); }
+.shop .s-tag { font-size: 0.875rem; font-weight: 600; }
+
+/* О нас */
+.about { display: grid; gap: clamp(32px, 5vw, 80px); }
+@media (min-width: 960px) { .about { grid-template-columns: 4fr 6fr; align-items: start; } .about-photo { position: sticky; top: 110px; } }
+.about-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.about-text { display: grid; gap: 1.5rem; align-content: start; }
+.about-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.15; }
+.about-text .prose { display: grid; gap: 1rem; font-size: 1.1875rem; max-width: 52ch; }
+.tpl-note { background: var(--linen); padding: 0.8rem 1rem; font-size: 0.95rem; max-width: 56ch; }
+
+/* Аренда кег */
+.kegs { margin-top: clamp(32px, 5vw, 64px); display: grid; gap: 12px; }
+.keg { background: var(--paper); display: grid; }
+@media (min-width: 800px) { .keg { grid-template-columns: minmax(260px, 400px) 1fr; } }
+.keg-stage { background: var(--sheet); aspect-ratio: 7 / 9; display: grid; touch-action: pan-y; user-select: none; cursor: grab; }
+.keg-stage:active { cursor: grabbing; }
+.keg-stage img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.keg-views { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px; background: var(--paper); }
+.keg-views button { min-height: 44px; border: 0; background: var(--linen); color: var(--ink); font: 600 0.95rem/1.2 var(--font-body); cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease); }
+.keg-views button:hover, .keg-views button[aria-pressed="true"] { background: var(--ink); color: var(--on-dark); }
+.keg-hint { padding: 0 6px 8px; font-size: 0.875rem; color: var(--ink-soft); }
+.keg-body { padding: clamp(20px, 2.4vw, 40px); display: grid; gap: 1.25rem; align-content: center; font-size: 1.1875rem; }
+.keg-body .specs { max-width: 440px; }
+.keg h3 { font-size: clamp(1.7rem, 2.6vw, 2.3rem); line-height: 1.05; }
+.keg-tag { justify-self: start; background: var(--linen); padding: 0.15rem 0.7rem; font-size: 0.9rem; }
+.keg .specs dd { font-size: 1.15rem; white-space: normal; text-align: right; }
+.kegs-note { margin-top: 1.5rem; max-width: 60ch; font-size: 1rem; }
+.field select { width: 100%; min-height: 52px; padding: 0.7rem 0.9rem; font: inherit; color: var(--ink); background: var(--sheet); border: 2px solid transparent; border-radius: 0; transition: border-color .2s var(--ease); }
+.field select:focus { outline: none; border-color: var(--red); }
+.on-dark .field select:focus { border-color: var(--on-dark); }

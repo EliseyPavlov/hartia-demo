@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Сорта пива Хартия: Слободское, Стольное, Чешское, Барское</title>
+<meta name="description" content="Четыре сорта живого нефильтрованного пива пивоварни «Хартия» из Тюмени: плотность и крепость каждого.">
+<!-- ВАЖНО: пока сайт демо, он закрыт от поисковиков. При запуске заменить noindex,nofollow на index,follow (и в robots.txt убрать Disallow). -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F2F0EA">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="256x256">
+<!-- При запуске добавить адрес сайта: <link rel="canonical" href="https://АДРЕС/sorta.html"> и og:url, og:image (полный адрес картинки), добавить sitemap.xml. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Хартия">
+<meta property="og:title" content="Сорта пива Хартия: Слободское, Стольное, Чешское, Барское">
+<meta property="og:description" content="Четыре сорта живого нефильтрованного пива пивоварни «Хартия» из Тюмени: плотность и крепость каждого.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<!--
+  КАК РЕДАКТИРОВАТЬ
+  Сайт собирается скриптом deck/build_site.py из резервной копии deck/onepage-backup.html.
+  Все .html-файлы сайта, assets/site.css и assets/site.js создаются заново при каждой сборке:
+  правки лучше вносить в скрипт или резервную копию.
+  Тексты, которые нужно подтвердить у владельца, помечены «ПРОВЕРИТЬ». Режимы DEMO и AGE_GATE: в assets/site.js.
+-->
+<script>document.documentElement.classList.add('js');</script>
+<div id="page">
+
+<div class="demo"><div class="wrap">Демо-версия. Тексты и названия сортов временные, продажи ещё не открыты.</div></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html" aria-label="Хартия, на главную"><img src="assets/hartia-nadpis-dark.svg" alt="Хартия" width="1051" height="171"></a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
+    <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="o-pivovarne.html">О пивоварне</a>
+      <a href="o-nas.html">О нас</a>
+      <a href="sorta.html" aria-current="page">Сорта</a>
+      <a href="arenda-keg.html">Аренда кег</a>
+      <a href="gde-najti.html">Где найти</a>
+      <a href="bot.html">Бот</a>
+      <a class="btn btn-red btn-sm" href="partneram.html">Партнёрам</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ПРОВЕРИТЬ С ЮРИСТОМ: названия сортов и их описания в интернете могут считаться рекламой пива -->
+<section class="field-band on-ink on-dark" id="sorta">
+  <div class="wrap">
+    <div class="sorts-head">
+      <h1 class="h2 rv">Сорта</h1>
+      <p class="lede rv" style="--i:1">Четыре сорта живого нефильтрованного пива.</p>
+    </div>
+    <!-- Описания и цифры из текста владельца от 12.11.2026 (Документ 52), опечатки исправлены. ПРОВЕРИТЬ С ЮРИСТОМ перед запуском -->
+    <!-- ПРОВЕРИТЬ У ВЛАДЕЛЬЦА: название четвёртого сорта — в присланном тексте читается как «Барское» (тёмное на венском солоде, 5 % / 12) -->
+    <ul class="menu">
+      <li class="sort rv">
+        <div><h3 class="sort-name">Слободское</h3><p class="sort-type">светлый лагер</p></div>
+        <p class="sort-desc">Сорт для любителей классического светлого пива. Достаточно лёгкое, с умеренной горчинкой — прекрасно подойдёт к солёным закускам.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>11</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>4,0</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Стольное</h3><p class="sort-type">светлый лагер</p></div>
+        <p class="sort-desc">Специально сварено для компаний, в которых понимают хорошее пиво, но вкусы разные: горечь на минимуме, насыщенность на максимуме.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>11,5</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>4,5</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Чешское</h3><p class="sort-type">пильзнер</p></div>
+        <p class="sort-desc">Наша интерпретация классической рецептуры. В результате получился хороший, ароматный плзень.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>9,5</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>3,5</dd></div>
+        </dl>
+      </li>
+      <li class="sort rv">
+        <div><h3 class="sort-name">Барское</h3><p class="sort-type">тёмный лагер</p></div>
+        <p class="sort-desc">Тёмное пиво на венском солоде. Лёгкая горчичка с нотками карамельного солода — отлично подойдёт под хорошую мясную закуску.</p>
+        <dl class="specs">
+          <div><dt>Плотность, Plato</dt><dd>12</dd></div>
+          <div><dt>Алкоголь, %</dt><dd>5,0</dd></div>
+        </dl>
+      </li>
+    </ul>
+    <p class="menu-note rv">Продажи ещё не открыты. Объём и места продажи появятся перед запуском.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-word rv"><img src="assets/hartia-nadpis-red.svg" alt="Хартия. Частная пивоварня, Тюмень" width="1051" height="171"></div>
+    <div class="foot-notes">
+      <!-- Реквизиты организации добавить перед запуском -->
+      <!-- ПРОВЕРИТЬ: адрес (улица в файле реквизитов читается плохо), телефон и почту подтвердить у владельца. Банковские реквизиты на сайт не выносим. -->
+      <p>ООО «Хартия», ИНН 7224068390, ОГРН 1157232039150. Адрес, телефон и почта будут добавлены после подтверждения.</p>
+      <p>Фото цеха: пивоварня «Хартия», 2026. Архивные иллюстрации: гравюра «Ветряная мельница», P. Benoist, The Metropolitan Museum of Art; фото Тюмени, С. М. Прокудин-Горский, 1912. Все в общественном достоянии или CC0; найдены через Wikimedia Commons, Met Open Access и rawpixel.</p>
+      <p>Магазин: «Баррель», Тюмень, ул. Бакинских Комиссаров, 3.</p>
+      <p>Бот: <a href="https://t.me/hatriya72_bot" target="_blank" rel="noopener">Telegram</a>, <a href="https://max.ru/se13813547_1_bot" target="_blank" rel="noopener">MAX</a></p>
+      <p>Канал: <a href="https://t.me/hartiya72" target="_blank" rel="noopener">Telegram</a></p>
+      <p>Чрезмерное употребление пива вредит вашему здоровью. Сайт предназначен для лиц старше 18 лет.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <img src="assets/hartia-nadpis-dark.svg" alt="Хартия">
+    <div id="gate-ask">
+      <h2 id="gate-title">Вам есть 18 лет?</h2>
+      <p>Сайт пивоварни предназначен для совершеннолетних.</p>
+      <div class="gate-actions">
+        <button class="btn btn-red" type="button" id="gate-yes">Да, мне есть 18</button>
+        <button class="btn btn-quiet" type="button" id="gate-no">Нет</button>
+      </div>
+    </div>
+    <div id="gate-denied" hidden>
+      <h2>Сайт доступен с 18 лет</h2>
+      <p>Приходите, когда вам исполнится 18.</p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+
+</body>
+</html>

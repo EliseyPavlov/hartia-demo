@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Место для фотографии владельца">
+  <rect width="800" height="1000" fill="#E4DFD2"/>
+  <circle cx="400" cy="400" r="150" fill="#B8B1A0"/>
+  <path d="M110 1000c0-230 130-370 290-370s290 140 290 370z" fill="#B8B1A0"/>
+</svg>

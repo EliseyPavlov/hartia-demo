@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хартия | Ссылки</title>
+    <!-- Иконка вкладки -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Подключаем ваш основной файл стилей -->
+    <link rel="stylesheet" href="assets/site.css">
+    
+    <style>
+        /* Дополнительные стили, чтобы отцентрировать контент хаба */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            /* Фон берется из вашего site.css */
+            background-color: var(--paper); 
+            padding: 24px;
+        }
+        .hub-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+        }
+        .hub-logo {
+            width: 100%;
+            max-width: 280px; /* Ограничиваем ширину логотипа */
+            margin: 0 auto 32px auto;
+        }
+        /* Делаем ваши стандартные кнопки на всю ширину для удобства на мобилках */
+        .hub-container .btn {
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+        .hub-divider {
+            height: 2px;
+            background-color: var(--linen); /* Цвет полосы из вашего гайдбука */
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="hub-container">
+        <!-- Тот самый логотип с красной мельницей -->
+        <img src="hartia-vertical-mill-landscape.webp" alt="Пивоварня Хартия" class="hub-logo">
+        
+        <!-- Используем классы кнопок из вашего site.css (.btn и .btn-red) -->
+        <a href="https://t.me/hatriya72_bot" class="btn btn-red" target="_blank">Аренда кег (Telegram)</a>
+        <a href="https://web.max.ru/798088538" class="btn" target="_blank">Аренда кег (MAX)</a>
+        
+        <div class="hub-divider"></div>
+        
+        <!-- Второстепенные кнопки (класс .btn-quiet) -->
+        <a href="https://t.me/hartiya72" class="btn btn-quiet" target="_blank">Наш Telegram-канал</a>
+        <a href="https://eliseypavlov.github.io/hartia-demo/" class="btn btn-quiet">Перейти на сайт</a>
+    </div>
+</body>
+</html>

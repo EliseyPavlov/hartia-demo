@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>О нас: история пивоварни Хартия в Тюмени</title>
+<meta name="description" content="История создания пивоварни «Хартия» из первых уст и ценности, по которым мы варим пиво в Тюмени.">
+<!-- ВАЖНО: пока сайт демо, он закрыт от поисковиков. При запуске заменить noindex,nofollow на index,follow (и в robots.txt убрать Disallow). -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F2F0EA">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="256x256">
+<!-- При запуске добавить адрес сайта: <link rel="canonical" href="https://АДРЕС/o-nas.html"> и og:url, og:image (полный адрес картинки), добавить sitemap.xml. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Хартия">
+<meta property="og:title" content="О нас: история пивоварни Хартия в Тюмени">
+<meta property="og:description" content="История создания пивоварни «Хартия» из первых уст и ценности, по которым мы варим пиво в Тюмени.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<!--
+  КАК РЕДАКТИРОВАТЬ
+  Сайт собирается скриптом deck/build_site.py из резервной копии deck/onepage-backup.html.
+  Все .html-файлы сайта, assets/site.css и assets/site.js создаются заново при каждой сборке:
+  правки лучше вносить в скрипт или резервную копию.
+  Тексты, которые нужно подтвердить у владельца, помечены «ПРОВЕРИТЬ». Режимы DEMO и AGE_GATE: в assets/site.js.
+-->
+<script>document.documentElement.classList.add('js');</script>
+<div id="page">
+
+<div class="demo"><div class="wrap">Демо-версия. Тексты и названия сортов временные, продажи ещё не открыты.</div></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html" aria-label="Хартия, на главную"><img src="assets/hartia-nadpis-dark.svg" alt="Хартия" width="1051" height="171"></a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
+    <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="o-pivovarne.html">О пивоварне</a>
+      <a href="o-nas.html" aria-current="page">О нас</a>
+      <a href="sorta.html">Сорта</a>
+      <a href="arenda-keg.html">Аренда кег</a>
+      <a href="gde-najti.html">Где найти</a>
+      <a href="bot.html">Бот</a>
+      <a class="btn btn-red btn-sm" href="partneram.html">Партнёрам</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="field-band" id="o-nas">
+  <div class="wrap about">
+    <figure class="about-photo rv">
+      <img src="assets/owner-brewer.webp" width="800" height="1000" alt="Пивовар пивоварни «Хартия» за работой у варочного порядка" loading="lazy">
+      <figcaption>Варочный порядок пивоварни: за работой.</figcaption>
+    </figure>
+    <div class="about-text">
+      <h1 class="h2 rv">О нас</h1>
+      <!-- Текст — из документа владельца (Документ 52, 12.11.2026), опечатки исправлены. ПРОВЕРИТЬ С ЮРИСТОМ перед запуском -->
+      <div class="prose rv" style="--i:1">
+        <p>«Хартия» — небольшая ремесленная пивоварня. Первое пиво мы сварили для себя, а потом уже начали делиться продуктом с жителями Тюмени.</p>
+        <p>Основная концепция пивоварни — свежесть и качество продукта. Мы хотим, чтобы тюменцы пили напиток, сваренный на их родной земле, и были уверены: пивовар их не подведёт, а то, что сегодня в кружке, ещё утром было на пивоварне.</p>
+        <p>Мы варим пиво, которому хочется уделить время: неспешно разлить его по бокалам, насладиться вкусом или разделить этот момент с самыми близкими.</p>
+        <p>В нашей линейке — четыре сорта настоящего нефильтрованного, непастеризованного пива. У каждого свой вкус, настроение и характер, а вместе они складываются в историю «Хартии»: историю о том, как любимое дело становится частью жизни.</p>
+        <p>Уже более десяти лет мы делимся своим пивом с вами. Откройте для себя «Хартию» — возможно, один из наших сортов станет именно тем, к которому захочется возвращаться.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="field-band on-red on-dark" id="cennosti">
+  <div class="wrap charter">
+    <div class="charter-head">
+      <h2 class="h2 rv">Во что мы верим</h2>
+      <p class="lede rv" style="--i:1">Четыре вещи, которыми мы не поступимся.</p>
+    </div>
+    <!-- Ценности по документам владельца. ПРОВЕРИТЬ С ЮРИСТОМ перед запуском -->
+    <ol class="articles">
+      <li class="rv"><h3>Честный состав</h3><p>Вода, солод, хмель и дрожжи. Без вкусовых добавок.</p></li>
+      <li class="rv"><h3>Свежесть</h3><p>То, что сегодня в кружке, ещё утром было на пивоварне. Пиво должно дойти до вас, пока оно живое.</p></li>
+      <li class="rv"><h3>Живое пиво</h3><p>Настоящее нефильтрованное, непастеризованное. Мы не торопим процесс.</p></li>
+      <li class="rv"><h3>Любимое дело</h3><p>История о том, как любимое дело становится частью жизни.</p></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-word rv"><img src="assets/hartia-nadpis-red.svg" alt="Хартия. Частная пивоварня, Тюмень" width="1051" height="171"></div>
+    <div class="foot-notes">
+      <!-- Реквизиты организации добавить перед запуском -->
+      <!-- ПРОВЕРИТЬ: адрес (улица в файле реквизитов читается плохо), телефон и почту подтвердить у владельца. Банковские реквизиты на сайт не выносим. -->
+      <p>ООО «Хартия», ИНН 7224068390, ОГРН 1157232039150. Адрес, телефон и почта будут добавлены после подтверждения.</p>
+      <p>Фото цеха: пивоварня «Хартия», 2026. Архивные иллюстрации: гравюра «Ветряная мельница», P. Benoist, The Metropolitan Museum of Art; фото Тюмени, С. М. Прокудин-Горский, 1912. Все в общественном достоянии или CC0; найдены через Wikimedia Commons, Met Open Access и rawpixel.</p>
+      <p>Магазин: «Баррель», Тюмень, ул. Бакинских Комиссаров, 3.</p>
+      <p>Бот: <a href="https://t.me/hatriya72_bot" target="_blank" rel="noopener">Telegram</a>, <a href="https://max.ru/se13813547_1_bot" target="_blank" rel="noopener">MAX</a></p>
+      <p>Канал: <a href="https://t.me/hartiya72" target="_blank" rel="noopener">Telegram</a></p>
+      <p>Чрезмерное употребление пива вредит вашему здоровью. Сайт предназначен для лиц старше 18 лет.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <img src="assets/hartia-nadpis-dark.svg" alt="Хартия">
+    <div id="gate-ask">
+      <h2 id="gate-title">Вам есть 18 лет?</h2>
+      <p>Сайт пивоварни предназначен для совершеннолетних.</p>
+      <div class="gate-actions">
+        <button class="btn btn-red" type="button" id="gate-yes">Да, мне есть 18</button>
+        <button class="btn btn-quiet" type="button" id="gate-no">Нет</button>
+      </div>
+    </div>
+    <div id="gate-denied" hidden>
+      <h2>Сайт доступен с 18 лет</h2>
+      <p>Приходите, когда вам исполнится 18.</p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+
+</body>
+</html>
